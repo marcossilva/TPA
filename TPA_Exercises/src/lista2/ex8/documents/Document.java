@@ -11,7 +11,9 @@ package lista2.ex8.documents;
  */
 public interface Document {
     public String readLine();
-    public boolean hasNextLine();
+    public String readLine(int chars);
+    public boolean hasNextLine();    
+    public boolean hasNextLine(int chars);        
     public void setNewDoc(String fileName);
     public void close();    
 }

@@ -26,5 +26,6 @@ public class Profiler {
                 mat[i][j] = k.compare(docs.get(i), docs.get(j));
             }
         }
+        return mat;
     }
 }

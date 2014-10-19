@@ -13,13 +13,16 @@ import java.util.logging.Logger;
  *
  * @author marcos
  */
-public class TextDocument implements Document{
+public class TextDocument implements Document {
+
     private Scanner in;
+    private String lastRead;
 
     public TextDocument(String fileName) {
         in = new Scanner(fileName);
+        lastRead = "";
     }
-    
+
     @Override
     public String readLine() {
         return in.nextLine();
@@ -45,5 +48,28 @@ public class TextDocument implements Document{
     public boolean hasNextLine() {
         return in.hasNextLine();
     }
-    
+
+    @Override
+    public String readLine(int chars) {
+        if (hasNextLine(chars)) {
+            String temp = lastRead.substring(0, chars);
+            lastRead = lastRead.substring(chars);
+            return temp;
+        } else {
+            //Continua a leitura recursivamente ate o numero 
+            //especificado de caracteres se alcançado
+            lastRead += in.next();
+            return this.readLine(chars);
+        }
+    }
+
+    @Override
+    public boolean hasNextLine(int chars) {
+        if (lastRead.length() >= chars) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
