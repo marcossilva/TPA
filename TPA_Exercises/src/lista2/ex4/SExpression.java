@@ -9,6 +9,8 @@ package lista2.ex4;
  *
  * @author Marcos
  */
-public class SExpression {
-    
+public abstract class SExpression {
+    abstract void interpretar();
+    abstract void aramazenar();
+    abstract void manipular();
 }
