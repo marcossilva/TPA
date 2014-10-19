@@ -5,29 +5,18 @@
  */
 package lista2.ex6;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.List;
+import java.util.Iterator;
+import lista2.ex3.*;
 
 /**
  *
  * @author Marcos
  */
-public class HeapSorterCollection {
-    private final Collection c;
-    private final List l;
-    private Comparator comp;
-    public HeapSorterCollection(Collection<? super Comparable> c) {
-        this.c = c;
-        l = new ArrayList(c);
-        comp = new Comparator() {
-
-            @Override
-            public int compare(Object o1, Object o2) {
-                
-            }
-        }
-    }
-    
+public class HeapSorterCollection {           
+    public Iterator sorter(Collection c, Comparator comp) {
+        
+        return null;        
+    }             
 }
