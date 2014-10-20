@@ -19,8 +19,8 @@ public class Profiler {
     public Profiler(List<Document> docs) {
         this.docs = docs;
     }
-    public int[][] similarity(Profile k){
-        int[][] mat = new int[this.docs.size()][this.docs.size()];
+    public double[][] similarity(Profile k){
+        double[][] mat = new double[this.docs.size()][this.docs.size()];
         for (int i = 0; i < mat.length; i++) {
             for (int j = i+1; j < mat.length; j++) {
                 mat[i][j] = k.compare(docs.get(i), docs.get(j));

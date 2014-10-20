@@ -22,18 +22,18 @@ public class KGramProfile implements Profile {
     }
 
     @Override
-    public int compare(Document a, Document b) {
+    public double compare(Document a, Document b) {
         String docA, docB;
         List<Integer> hashA = new ArrayList<>();
         List<Integer> hashB = new ArrayList<>();
-        while (a.hasNextLine() || b.hasNextLine()) {
-            if (a.hasNextLine()) {
-                docA = a.readLine();
+        while (a.hasNextLine(l) || b.hasNextLine(l)) {
+            if (a.hasNextLine(l)) {
+                docA = a.readLine(l);
             } else {
                 docA = "";
             }
-            if (b.hasNextLine()) {
-                docB = b.readLine();
+            if (b.hasNextLine(l)) {
+                docB = b.readLine(l);
             } else {
                 docB = "";
             }
@@ -41,8 +41,11 @@ public class KGramProfile implements Profile {
             hashB.add(docB.hashCode());
         }
         //Calcular distancia vetorial entre hashA e hashB
-        int distVet = 0;
-        return distVet;
+        double distVet = 0;
+        for (int i = 0; i < hashA.size(); i++) {
+            distVet += Math.pow(hashA.get(i) - hashB.get(i), 2);
+        }        
+        return Math.sqrt(distVet);
     }
 
 }
