@@ -15,5 +15,6 @@ public interface Document {
     public boolean hasNextLine();    
     public boolean hasNextLine(int chars);        
     public void setNewDoc(String fileName);
-    public void close();    
+    public void close();
+    public void reset();
 }

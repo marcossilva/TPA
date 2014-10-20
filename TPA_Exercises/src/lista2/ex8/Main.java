@@ -26,7 +26,7 @@ public class Main {
         double[][] mat = p.similarity(new KGramProfile(500));
         for (int i = 0; i < mat.length; i++) {            
             for (int j = 0; j < mat.length; j++) {                
-                System.out.printf("%.4f ",(mat[i][j]/1000000000)/100);
+                System.out.printf("%.4f ",(mat[i][j]/10000000000.0));
             }
             System.out.println("");
         }

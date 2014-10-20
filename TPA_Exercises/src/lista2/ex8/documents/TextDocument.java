@@ -5,6 +5,7 @@
  */
 package lista2.ex8.documents;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
@@ -19,10 +20,11 @@ public class TextDocument implements Document {
 
     private Scanner in;
     private String lastRead;
-
+    private String fileName;
     public TextDocument(String fileName) throws FileNotFoundException {
-        in = new Scanner(new FileReader(fileName));
-        lastRead = "";
+        this.fileName = fileName;
+        this.in = new Scanner(new FileReader(fileName));
+        this.lastRead = "";
     }
 
     @Override
@@ -78,6 +80,17 @@ public class TextDocument implements Document {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public void reset() {
+        this.in.close();
+        try {
+            this.in = new Scanner(new FileInputStream(fileName));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TextDocument.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.lastRead = "";
     }
 
 }
