@@ -5,6 +5,8 @@
  */
 package lista2.ex8.documents;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,8 +20,8 @@ public class TextDocument implements Document {
     private Scanner in;
     private String lastRead;
 
-    public TextDocument(String fileName) {
-        in = new Scanner(fileName);
+    public TextDocument(String fileName) throws FileNotFoundException {
+        in = new Scanner(new FileReader(fileName));
         lastRead = "";
     }
 
@@ -51,21 +53,27 @@ public class TextDocument implements Document {
 
     @Override
     public String readLine(int chars) {
-        if (hasNextLine(chars)) {
+        if (lastRead.length() >= chars) {
             String temp = lastRead.substring(0, chars);
-            lastRead = lastRead.substring(chars);
+            this.lastRead = lastRead.substring(chars);
             return temp;
         } else {
             //Continua a leitura recursivamente ate o numero 
             //especificado de caracteres se alcançado
-            lastRead += in.next();
-            return this.readLine(chars);
+            if (in.hasNext()) {
+                this.lastRead += in.next();
+                return this.readLine(chars);
+            } else {
+                return this.lastRead;
+            }            
         }
     }
 
     @Override
     public boolean hasNextLine(int chars) {
-        if (lastRead.length() >= chars) {
+        if (in.hasNext()) {
+            return true;
+        } else if (lastRead.length() >= chars) {
             return true;
         } else {
             return false;
