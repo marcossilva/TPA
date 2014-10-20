@@ -5,12 +5,24 @@
  */
 package lista2.ex6;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
+
 /**
  *
  * @author marcos
+ * @param <T>
  */
-public class Heap {
-    private static <T extends Comparable<? super T>> void heapSort(T[] v) {
+public class Heap<T> {
+    private T[] a;
+    private Comparator comp;
+    public Heap(T[] a, Comparator comp){
+        this.a = a;
+        heapSort(a);
+    }
+    private <T> void heapSort(T[] v) {
         buildMaxHeap(v);
         int n = v.length;
  
@@ -20,31 +32,32 @@ public class Heap {
         }
     }
  
-    private static <T extends Comparable<? super T>> void buildMaxHeap(T v[]) {
+    private <T> void buildMaxHeap(T v[]) {
         for (int i = v.length / 2 - 1; i >= 0; i--)
             maxHeapify(v, i, v.length);
     }
  
-    private static <T extends Comparable<? super T>> void maxHeapify(T[] v, int pos,
+    private <T> void maxHeapify(T[] v, int pos,
             int n) {
         int max = 2 * pos + 1, right = max + 1;
         if (max < n) {
-            if (right < n && v[max].compareTo(v[right]) < 0)
+            if (right < n && comp.compare(v[max], v[right]) < 0)
                 max = right;
-            if (v[max].compareTo(v[pos]) > 0) {
+            if (comp.compare(v[max], v[pos]) > 0) {
                 swap(v, max, pos);
                 maxHeapify(v, max, n);
             }
         }
     }
  
-    private static void swap(Object[] v, int j, int aposJ) {
+    private void swap(Object[] v, int j, int aposJ) {
         Object aux = v[j];
         v[j] = v[aposJ];
         v[aposJ] = aux;
-    }
-    
-    public void add(Object h){
-        
+    }    
+    public Iterator iterator(){
+        ArrayList l = new ArrayList();
+        l.addAll(Arrays.asList(a));
+        return l.iterator();
     }
 }

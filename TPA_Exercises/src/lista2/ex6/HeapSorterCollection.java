@@ -8,7 +8,6 @@ package lista2.ex6;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
-import lista2.ex3.*;
 
 /**
  *
@@ -16,7 +15,7 @@ import lista2.ex3.*;
  */
 public class HeapSorterCollection {           
     public Iterator sorter(Collection c, Comparator comp) {
-        
-        return null;        
+        Heap h = new Heap(c.toArray(), comp);
+        return h.iterator();
     }             
 }
