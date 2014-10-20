@@ -3,7 +3,6 @@ package lista2.ex8;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import lista2.ex8.documents.Document;
 import lista2.ex8.documents.TextDocument;
