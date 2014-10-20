@@ -38,13 +38,16 @@ public class KGramProfile implements Profile {
                 docB = "";
             }
             hashA.add(docA.hashCode());
+            System.out.println(docA.hashCode());
+            System.out.println(docB.hashCode());
+            System.out.println("");
             hashB.add(docB.hashCode());
         }
         //Calcular distancia vetorial entre hashA e hashB
         double distVet = 0;
         for (int i = 0; i < hashA.size(); i++) {
             distVet += Math.pow(hashA.get(i) - hashB.get(i), 2);
-        }        
+        }
         return Math.sqrt(distVet);
     }
 

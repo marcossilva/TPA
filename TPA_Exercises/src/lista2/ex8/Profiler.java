@@ -23,6 +23,10 @@ public class Profiler {
         double[][] mat = new double[this.docs.size()][this.docs.size()];
         for (int i = 0; i < mat.length; i++) {
             for (int j = i+1; j < mat.length; j++) {
+                System.out.println("Comparando");
+                System.out.println(docs.get(i));
+                System.out.println(docs.get(j));
+                System.out.println("");
                 mat[i][j] = k.compare(docs.get(i), docs.get(j));
             }
         }
