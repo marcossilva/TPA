@@ -32,5 +32,6 @@ public class Main {
             Integer next = (Integer) iterator.next();
             System.out.println(next);           
         }
+        
     }
 }

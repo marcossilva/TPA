@@ -31,4 +31,9 @@ public class WidthIterator extends OrderIterator {
             setOrder(raiz.getRight());
         }
     }
+
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
