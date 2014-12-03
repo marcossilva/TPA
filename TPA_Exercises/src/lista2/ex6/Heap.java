@@ -20,6 +20,7 @@ public class Heap<T> {
     private Comparator comp;
     public Heap(T[] a, Comparator comp){
         this.a = a;
+        this.comp = comp;
         heapSort(a);
     }
     private <T> void heapSort(T[] v) {
